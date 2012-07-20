@@ -8,13 +8,13 @@
     <div class="pn-adminpageicon">{img modname='core' src='agt_family.gif' set='icons/large' __alt=$templatetitle}</div>
     <h2>{$fullname|safetext} -> {gt text="Enrole users in the course"}</h2>
     <form  method="post" name="enrole" id="enrole">
-        <input type="hidden" name="authid" value="{$security}"-->
-               <input type="hidden" name="id" value="{$id}">
-        <input type="hidden" name="who" value="{$who}">
-        <input type="hidden" name="m" value="{$m}">
-        <input type="hidden" name="canvi" value="1">	
+        <input type="hidden" name="authid" value="{$security}" />
+        <input type="hidden" name="id" value="{$id}" />
+        <input type="hidden" name="who" value="{$who}" />
+        <input type="hidden" name="m" value="{$m}" />
+        <input type="hidden" name="canvi" value="1" />	
 
-        <table width="100%">		
+        <table width="100%">
             <tr>
                 <td>
                 </td>
@@ -59,7 +59,7 @@
         </table>
         <div style="text-align: right;">
             <img style="cursor: pointer;" src="images/icons/small/button_ok.gif" onClick="javascript:send(0)" /> {gt text="Send"}
-            <a href="{modurl modname=IWmoodle type=admin func=list id=$id}">{img modname='core' src='button_cancel.gif' set='icons/small' __alt=$templatetitle} {gt text="Cancel"}</a>
+            <a href="{modurl modname=IWmoodle type=admin func=usersList id=$id}">{img modname='core' src='button_cancel.gif' set='icons/small' __alt=$templatetitle} {gt text="Cancel"}</a>
         </div>
     </form>
 </div>

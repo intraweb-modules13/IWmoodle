@@ -15,7 +15,7 @@
 {/if}
 {/if}
 {if $action eq 'chgCourseOptions'}
-<a href="{modurl modname=IWmoodle type=admin func=list id=$id}">{gt text="List"}</a>
+<a href="{modurl modname=IWmoodle type=admin func=usersList id=$id}">{gt text="List"}</a>
 <br />
 {if $state eq 0}
 <a href="javascript:chgCourseState({$id})" style="font-weight: 400;">{gt text="Active"}</a>

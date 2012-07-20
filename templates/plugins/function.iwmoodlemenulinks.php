@@ -1,7 +1,6 @@
 <?php
 
 function smarty_function_iwmoodlemenulinks($params, &$smarty) {
-    $dom = ZLanguage::getModuleDomain('IWmoodle');
     $id = FormUtil::getPassedValue('id');
     $func = FormUtil::getPassedValue('func');
 
@@ -22,19 +21,19 @@ function smarty_function_iwmoodlemenulinks($params, &$smarty) {
     $moodlemenulinks = "<span class=\"" . $params['class'] . "\">" . $params['start'] . " ";
 
     if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN)) {
-        $moodlemenulinks .= "<a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'main')) . "\">" . __('Show available courses', $dom) . "</a> ";
+        $moodlemenulinks .= "<a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'main')) . "\">" . __('Show available courses') . "</a> ";
     }
-    if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN) && isset($func) && $func == 'list') {
-        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'enrole', array('id' => $id))) . "\">" . __('Enrol users into the course', $dom) . "</a> ";
-    }
-    if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN)) {
-        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'conf')) . "\">" . __('Module configuration', $dom) . "</a> ";
+    if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN) && isset($func) && $func == 'usersList') {
+        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'enrole', array('id' => $id))) . "\">" . __('Enrol users into the course') . "</a> ";
     }
     if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN)) {
-        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'sincron')) . "\">" . __('Synchronize users', $dom) . "</a> ";
+        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'conf')) . "\">" . __('Module configuration') . "</a> ";
+    }
+    if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN)) {
+        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'sincron')) . "\">" . __('Synchronize users') . "</a> ";
     }
     if (SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN) && isset($func) && $func == 'enrole') {
-        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'list', array('id' => $id))) . "\">" . __('Return to the course users list', $dom) . "</a> ";
+        $moodlemenulinks .= $params['seperator'] . " <a href=\"" . DataUtil::formatForDisplayHTML(ModUtil::url('IWmoodle', 'admin', 'usersList', array('id' => $id))) . "\">" . __('Return to the course users list') . "</a> ";
     }
 
 
