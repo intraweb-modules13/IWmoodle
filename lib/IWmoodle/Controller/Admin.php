@@ -444,7 +444,7 @@ function IWmoodle_admin_enrole($args) {
     $enrolid = ModUtil::apiFunc('IWmoodle', 'admin', 'getEnrolId', array('courseid' => $id));
 
     if (!$enrolid > 0) {
-        LogUtil::registerError(__('The manual inscription method is not defined in course.', $dom));
+        LogUtil::registerError(__('The manual inscription method is not defined in course. You showd define if from Moodle administration tools.', $dom));
         return System::redirect(ModUtil::url('IWmoodle', 'admin', 'list', array('id' => $id)));
     }
 

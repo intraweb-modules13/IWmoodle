@@ -270,7 +270,7 @@ function IWmoodle_adminapi_enrol_user($args) {
 
     if (!$enrolid > 0) {
         $connect->close();
-        return LogUtil::registerError(__('The manual inscription method is not defined in course.', $dom));
+        return LogUtil::registerError(__('The manual inscription method is not defined in course. You showd define if from Moodle administration tools.', $dom));
     }
 
     $connect = DBConnectionStack::init('moodle2');
