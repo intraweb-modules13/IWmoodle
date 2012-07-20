@@ -40,7 +40,7 @@ function IWmoodle_coursesblock_display($row) {
             'sv' => $sv,
             'nult' => true));
         $row['content'] = $s;
-        return BlockUtil::themesideblock($row);
+        return BlockUtil::BlockUtil::themesideblock($row);
     }
     // Create output object
     $view = Zikula_View::getInstance('IWmoodle', false);
@@ -128,5 +128,5 @@ function IWmoodle_coursesblock_display($row) {
         'sv' => $sv,
         'value' => $row['content'],
         'lifetime' => '1000'));
-    return BlockUtil::themesideblock($row);
+    return BlockUtil::BlockUtil::themesideblock($row);
 }

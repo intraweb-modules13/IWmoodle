@@ -9,7 +9,7 @@
 function IWmoodle_userapi_getallpre_ins($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -36,7 +36,7 @@ function IWmoodle_userapi_getallpre_ins($args) {
 function IWmoodle_userapi_delete_pre($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     // Argument check 
@@ -60,7 +60,7 @@ function IWmoodle_userapi_delete_pre($args) {
 function IWmoodle_userapi_is_enroled($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -100,7 +100,7 @@ function IWmoodle_userapi_is_enroled($args) {
 function IWmoodle_userapi_is_user($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -136,7 +136,7 @@ function IWmoodle_userapi_is_user($args) {
 function IWmoodle_userapi_getcourse($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -181,7 +181,7 @@ function IWmoodle_userapi_getcourse($args) {
 function IWmoodle_userapi_getuserMDuid($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -218,7 +218,7 @@ function IWmoodle_userapi_getuserMDuid($args) {
 function IWmoodle_userapi_getusercourses($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);
@@ -265,7 +265,7 @@ function IWmoodle_userapi_getusercourses($args) {
 function IWmoodle_userapi_is_preenroled($args) {
     $dom = ZLanguage::getModuleDomain('IWmoodle');
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
     extract($args);

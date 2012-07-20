@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: IWmoodle module\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-27 08:44+0100\n"
-"PO-Revision-Date: 2012-06-20 10:24+0100\n"
+"PO-Revision-Date: 2012-07-20 12:30+0100\n"
 "Last-Translator: intraweb <intraweb@xtec.cat>\n"
 "Language-Team: Intraweb <intraweb@xtec.cat>\n"
 "MIME-Version: 1.0\n"
@@ -517,4 +517,7 @@ msgstr "No hi ha usuaris al Moodle que no estiguin a la intranet"
 #: pntemplates/iwmoodle_admin_menu.htm:4
 msgid "Moodle Integration"
 msgstr "Integració del Moodle"
+
+msgid "The manual inscription method is not defined in course."
+msgstr "El mètode d'inscripció manual no ha estat definit per a aquest curs."
 

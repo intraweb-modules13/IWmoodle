@@ -441,6 +441,15 @@ function IWmoodle_admin_enrole($args) {
         return LogUtil::registerPermissionError();
     }
 
+    $enrolid = ModUtil::apiFunc('IWmoodle', 'admin', 'getEnrolId', array('courseid' => $id));
+
+    if (!$enrolid > 0) {
+        //print 'enrolId: ' . $enrolid;die();
+        //die();
+        LogUtil::registerError(__('The manual inscription method is not defined in course.', $dom));
+        return System::redirect(ModUtil::url('IWmoodle', 'admin', 'list', array('id' => $id)));
+    }
+
     // Create output object
     $view = Zikula_View::getInstance('IWmoodle', false);
 
@@ -499,7 +508,6 @@ function IWmoodle_admin_update_enrole($args) {
     if (!SecurityUtil::checkPermission('IWmoodle::', '::', ACCESS_ADMIN)) {
         return LogUtil::registerPermissionError();
     }
-
 
     // Confirm authorisation code
     if (!SecurityUtil::confirmAuthKey()) {

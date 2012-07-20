@@ -265,14 +265,22 @@ function IWmoodle_adminapi_enrol_user($args) {
         return LogUtil::registerPermissionError();
     }
     $prefix = ModUtil::getVar('IWmoodle', 'dbprefix');
+
+    $enrolid = ModUtil::apiFunc('IWmoodle', 'admin', 'getEnrolId', array('courseid' => $course));
+
+    if (!$enrolid > 0) {
+        $connect->close();
+        return LogUtil::registerError(__('The manual inscription method is not defined in course.', $dom));
+    }
+
     $connect = DBConnectionStack::init('moodle2');
     if (!$connect) {
         return LogUtil::registerError(__('The connection to Moodle database has failed.', $dom));
     }
-    
+
     DBConnectionStack::popConnection();
     $time = time();
-    
+
     // get context id
     $sql = "SELECT $prefix" . "context.id FROM $prefix" . "context WHERE $prefix" . "context.instanceid=$course AND $prefix" . "context.contextlevel=50";
     $rs = $connect->Execute($sql);
@@ -290,16 +298,6 @@ function IWmoodle_adminapi_enrol_user($args) {
         $connect->close();
         return LogUtil::registerError(__('An error occurred doing the action.', $dom));
     }
-
-    // get enrolid id
-    $sql = "SELECT $prefix" . "enrol.id FROM $prefix" . "enrol WHERE $prefix" . "enrol.enrol='manual' AND $prefix" . "enrol.courseid=$course";
-    $rs = $connect->Execute($sql);
-    if (!$rs) {
-        $connect->close();
-        return LogUtil::registerError(__('Error! Could not load items.', $dom));
-    }
-    $array = $rs->FetchRow();
-    $enrolid = $array[0];
 
     $sql = "INSERT INTO $prefix" . "user_enrolments (status,enrolid,userid,timestart,timeend,modifierid,timecreated,timemodified)
                                                                           VALUES (0,$enrolid,$user,'$time','2147483647',$user,'$time','$time')";
@@ -328,7 +326,7 @@ function IWmoodle_adminapi_nombre($args) {
         return LogUtil::registerPermissionError();
     }
     // Connect with database
-    list($dbconn) = DBConnectionStack::getConnection*();
+    list($dbconn) = DBConnectionStack::getConnection();
     $pntable = & DBUtil::getTables();
     $t = $pntable['group_membership'];
     $c = $pntable['group_membership_column'];
@@ -500,7 +498,7 @@ function IWmoodle_adminapi_getusers($args) {
         return LogUtil::registerPermissionError();
     }
     // Connect with database
-    list($dbconn) = DBConnectionStack::getConnection*();
+    list($dbconn) = DBConnectionStack::getConnection();
     $pntable = & DBUtil::getTables();
     $t = $pntable['group_membership'];
     $c = $pntable['group_membership_column'];
@@ -546,7 +544,7 @@ function IWmoodle_adminapi_preenrol_user($args) {
         return LogUtil::registerError(__('Error! Could not do what you wanted. Please check your input.', $dom));
     }
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle::', "::", ACCESS_ADMIN)) {
+    if (!SecurityUtil::checkPermission('IWmoodle::', "::", ACCESS_ADMIN)) {
         return false;
     }
     if (!DBUtil::insertObject($args, 'IWmoodle', 'mid')) {
@@ -647,4 +645,33 @@ function IWmoodle_adminapi_createUser($args) {
     }
     // Return the id of the newly created user to the calling process
     return $items['uid'];
+}
+
+/**
+ * Create a new user in table users
+ * @author:     Albert Pérez Monfort (aperezm@xtec.cat)
+ * @param:	args   user values
+ * @return:	True if success and false otherwise
+ */
+function IWmoodle_adminapi_getEnrolId($args) {
+    $courseid = FormUtil::getPassedValue('courseid', isset($args['courseid']) ? $args['courseid'] : null, 'POST');
+
+
+    $prefix = ModUtil::getVar('IWmoodle', 'dbprefix');
+    $connect = DBConnectionStack::init('moodle2');
+    if (!$connect) {
+        return LogUtil::registerError(__('The connection to Moodle database has failed.', $dom));
+    }
+
+    DBConnectionStack::popConnection();
+    // get enrolid id
+    $sql = "SELECT $prefix" . "enrol.id FROM $prefix" . "enrol WHERE $prefix" . "enrol.enrol='manual' AND $prefix" . "enrol.courseid=$courseid";
+
+    $rs = $connect->Execute($sql);
+    if (!$rs) {
+        $connect->close();
+        return LogUtil::registerError(__('Error! Could not load items.', $dom));
+    }
+    $array = $rs->FetchRow();
+    return $array[0];
 }

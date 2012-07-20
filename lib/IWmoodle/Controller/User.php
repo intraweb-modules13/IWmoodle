@@ -89,7 +89,7 @@ function IWmoodle_user_main() {
  */
 function IWmoodle_user_enrole() {
     // Security check
-    if (!SecurityUtil::checkPermission*(0, 'IWmoodle:coursesblock:', "::", ACCESS_READ)) {
+    if (!SecurityUtil::checkPermission('IWmoodle:coursesblock:', "::", ACCESS_READ)) {
         return false;
     }
 
