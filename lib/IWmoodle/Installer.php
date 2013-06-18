@@ -29,15 +29,15 @@ class IWmoodle_Installer extends Zikula_AbstractInstaller {
             return false;
 
         //Create module vars
-        $this->setVar('IWmoodle', 'moodleurl', '../moodle2')
-                ->setVar('IWmoodle', 'newwindow', 1)
-                ->setVar('IWmoodle', 'guestuser', 'guest')
-                ->setVar('IWmoodle', 'dbprefix', 'm2')
-                ->setVar('IWmoodle', 'dfl_description', 'User description')
-                ->setVar('IWmoodle', 'dfl_language', 'en_utf8')
-                ->setVar('IWmoodle', 'dfl_country', 'ES')
-                ->setVar('IWmoodle', 'dfl_city', 'City name')
-                ->setVar('IWmoodle', 'dfl_gtm', '99');
+        $this->setVar('moodleurl', '../moodle2')
+                ->setVar('newwindow', 1)
+                ->setVar('guestuser', 'guest')
+                ->setVar('dbprefix', 'm2')
+                ->setVar('dfl_description', 'User description')
+                ->setVar('dfl_language', 'en_utf8')
+                ->setVar('dfl_country', 'ES')
+                ->setVar('dfl_city', 'City name')
+                ->setVar('dfl_gtm', '99');
         return true;
     }
 
@@ -52,15 +52,15 @@ class IWmoodle_Installer extends Zikula_AbstractInstaller {
         DBUtil::dropTable('IWmoodle');
 
         //Delete module vars
-        $this->delVar('IWmoodle', 'moodleurl')
-                ->delVar('IWmoodle', 'newwindow')
-                ->delVar('IWmoodle', 'guestuser')
-                ->delVar('IWmoodle', 'dbprefix')
-                ->delVar('IWmoodle', 'dfl_description')
-                ->delVar('IWmoodle', 'dfl_language')
-                ->delVar('IWmoodle', 'dfl_country')
-                ->delVar('IWmoodle', 'dfl_city')
-                ->delVar('IWmoodle', 'dfl_gtm');
+        $this->delVar('moodleurl')
+                ->delVar('newwindow')
+                ->delVar('guestuser')
+                ->delVar('dbprefix')
+                ->delVar('dfl_description')
+                ->delVar('dfl_language')
+                ->delVar('dfl_country')
+                ->delVar('dfl_city')
+                ->delVar('dfl_gtm');
         return true;
     }
 
